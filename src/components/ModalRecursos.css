@@ -1,0 +1,77 @@
+/* src/components/ModalRecursos.css */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  max-width: 900px;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.subcategorias-container {
+  width: 120px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subcategoria {
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.subcategoria img {
+  width: 100%;
+  height: auto;
+  max-width: 80px;
+}
+
+.subcategoria.expanded {
+  transform: scale(1.2);
+}
+
+.subcategoria-nome {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Recursos */
+.recursos-container {
+  flex-grow: 1;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+ul li strong {
+  font-weight: bold;
+  color: #000;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}

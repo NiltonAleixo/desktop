@@ -1,0 +1,190 @@
+/* src/pages/Sabichinhos/Sabichinhos.css */
+.sabichinhos-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* Logo Principal */
+.logo {
+  width: 40%;
+  position: absolute;
+  top: 5%;
+}
+
+/* Botões no topo da tela */
+.top-buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* Ícones superiores */
+.icon {
+  width: 60px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Barra de pesquisa - Inicialmente oculta */
+.search-bar-container {
+  position: absolute;
+  top: 5px; /* Alinhado com o botão Pesquisar */
+  left: 70px; /* Começa ao lado do botão Pesquisar */
+  display: flex;
+  align-items: center;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  width: 0; /* Oculta por padrão */
+}
+
+/* Barra visível ao abrir */
+.search-bar-container.open {
+  width: 300px; /* Ajuste conforme necessário */
+}
+
+.barra-busca {
+  width: 300px;
+}
+
+.search-bar-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 94%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-bar-content input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar-content button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.search-bar-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Botão de som */
+.sound-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+/* Painel Interativo */
+.painel-container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.painel-base {
+  width: 81%;
+}
+
+.botoes {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 22px;
+}
+
+.botao {
+  width: 110px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  filter: brightness(1.2);
+}
+
+/* Ícone da TV */
+.tv-icon {
+  width: 120px;
+  position: absolute;
+  bottom: 100px;
+  left: 200px;
+  cursor: pointer;
+}
+
+.tv-icon:hover {
+  filter: brightness(1.2);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0); /* Fundo escuro semi-transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer; /* Indica que a área é clicável */
+}
+
+.modal-container {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+  cursor: default; /* Remove o cursor de clique dentro do modal */
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Logo Zabran */
+.logo-zabran {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+}
