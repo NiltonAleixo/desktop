@@ -143,19 +143,17 @@
   filter: brightness(1.2);
 }
 
-/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0); /* Fundo escuro semi-transparente */
+  background: rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  cursor: pointer; /* Indica que a área é clicável */
 }
 
 .modal-container {
@@ -163,7 +161,8 @@
   width: 80%;
   max-width: 800px;
   height: auto;
-  cursor: default; /* Remove o cursor de clique dentro do modal */
+  top: 16%; /* Move o modal mais para cima */
+  transform: translateY(-30%);
 }
 
 .modal-image {
@@ -176,9 +175,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
-  text-align: center;
+  width: 90%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* Logo Zabran */

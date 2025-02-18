@@ -123,6 +123,7 @@ const SabichinhosPage = () => {
               alt="Modal"
               className="modal-image"
             />
+            {/* Container para renderizar os recursos dentro do modal */}
             <div className="modal-content">
               <ModalRecursos categoria={selectedCategory} onClose={handleCloseModal} />
             </div>

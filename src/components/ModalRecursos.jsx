@@ -4,16 +4,21 @@ import "./ModalRecursos.css";
 const ModalRecursos = ({ categoria, onClose }) => {
   const [recursos, setRecursos] = useState([]);
   const [subcategorias, setSubcategorias] = useState([]);
+  const [subcategoriasComRecursos, setSubcategoriasComRecursos] = useState(new Set()); // Subcategorias ativas
   const [expandedSubcategoria, setExpandedSubcategoria] = useState(null);
 
   useEffect(() => {
     if (categoria?.id) {
-      // Buscar recursos da categoria
       window.api.invoke("getRecursosByCategoria", categoria.id)
-        .then((result) => setRecursos(result))
+        .then((result) => {
+          setRecursos(result);
+
+          // Criamos um conjunto de subcategorias que têm recursos na coleção
+          const subcategoriasAtivas = new Set(result.map(recurso => recurso.subcategoria_id));
+          setSubcategoriasComRecursos(subcategoriasAtivas);
+        })
         .catch((err) => console.error("Erro ao buscar recursos:", err));
 
-      // Buscar subcategorias associadas
       window.api.invoke("getSubcategorias", categoria.id)
         .then((result) => setSubcategorias(result))
         .catch((err) => console.error("Erro ao buscar subcategorias:", err));
@@ -21,33 +26,36 @@ const ModalRecursos = ({ categoria, onClose }) => {
   }, [categoria]);
 
   const handleSubcategoriaClick = (subcategoria) => {
-    setExpandedSubcategoria((prev) => (prev === subcategoria ? null : subcategoria));
+    if (subcategoriasComRecursos.has(subcategoria.id)) {
+      setExpandedSubcategoria((prev) => (prev === subcategoria ? null : subcategoria));
+    }
   };
 
   return (
     <div className="modal" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>{categoria?.nome || "Recursos"}</h2>
 
-        <div className="subcategorias-container">
-          {subcategorias.map((sub, index) => (
-            <div
-              key={sub.id || index}
-              className={`subcategoria ${expandedSubcategoria === sub ? "expanded" : ""}`}
-              onClick={() => handleSubcategoriaClick(sub)}
-            >
-              <img
-                src={`${process.env.PUBLIC_URL}/images/Sabichinhos/sub${index + 1}.png`}
-                alt={sub.nome}
-              />
-              {expandedSubcategoria === sub && (
-                <div className="subcategoria-nome">{sub.nome}</div>
-              )}
-            </div>
-          ))}
+        {/* Botões Laterais */}
+        <div className="botoes-laterais">
+          {subcategorias.map((sub, index) => {
+            const isAtivo = subcategoriasComRecursos.has(sub.id);
+            const imagemBotao = isAtivo
+              ? `${process.env.PUBLIC_URL}/images/botoes/sub${index + 1}.2.png`
+              : `${process.env.PUBLIC_URL}/images/botoes/sub${index + 1}.png`;
+
+            return (
+              <button
+                key={sub.id || index}
+                className={`botao-lateral ${expandedSubcategoria === sub ? "ativo" : ""}`}
+                onClick={() => handleSubcategoriaClick(sub)}
+              >
+                <img src={imagemBotao} alt={sub.nome} />
+              </button>
+            );
+          })}
         </div>
 
-        {/* Listagem de recursos filtrada por subcategoria */}
+        {/* Lista de Recursos */}
         <div className="recursos-container">
           {recursos.length > 0 ? (
             <ul>

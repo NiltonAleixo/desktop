@@ -1,77 +1,81 @@
 /* src/components/ModalRecursos.css */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Mantém o escurecimento do fundo */
+}
+
 .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 85%;
   max-width: 900px;
-  background-color: white;
+  background: none; /* Remove o fundo branco */
   padding: 25px;
   border-radius: 12px;
   display: flex;
   flex-direction: row;
   gap: 20px;
+  overflow: hidden; /* Evita barras de rolagem desnecessárias */
 }
 
-.subcategorias-container {
-  width: 120px;
-  margin-right: 15px;
+.recursos-container {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recursos-container img, 
+.recursos-container video, 
+.recursos-container iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Mantém o tamanho original sem cortar */
+}
+
+/* Botões Laterais */
+.botoes-laterais {
+  position: absolute;
+  top: 50%;
+  left: -70px; /* Move para a lateral do modal */
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
 }
 
-.subcategoria {
-  margin-bottom: 8px;
+.botao-lateral {
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  width: 70px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.subcategoria img {
+.botao-lateral img {
   width: 100%;
   height: auto;
-  max-width: 80px;
 }
 
-.subcategoria.expanded {
-  transform: scale(1.2);
+/* Botão Ativo */
+.botao-lateral.ativo {
+  transform: scale(1.3);
 }
 
-.subcategoria-nome {
-  margin-top: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
+/* Botões Inativos visíveis, mas menores */
+.botao-lateral:not(.ativo) {
+  opacity: 0.5;
+  cursor: default;
 }
 
-/* Recursos */
-.recursos-container {
-  flex-grow: 1;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #555;
-}
-
-ul li strong {
-  font-weight: bold;
-  color: #000;
-}
-
-ul li a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-ul li a:hover {
-  text-decoration: underline;
-}
